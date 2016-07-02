@@ -1,0 +1,33 @@
+<div id="db-dialog" class="overlay">
+  <div class="popup">
+    <a class="close" href="#">&times;</a>
+    <h4>Connect to a saved database</h4>
+    <ul class="db-list">
+      {{#dbs}}
+        <li name="{{name}}">
+          <span>{{name}}</span>
+          <span class="button db-btn" data-action="connect" data-target="{{url}}">Connect</span>
+          <span class="button db-btn" data-action="view" data-target="{{url}}">View</span>
+          <span class="button db-btn" data-action="remove" data-target="{{name}}">Remove</span>
+        </li>
+      {{/dbs}}
+    </ul>
+    {{^dbs}}
+      <p>No saved databases.</p>
+    {{/dbs}}
+
+    <h4>Add a new database</h4>
+    <form>
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" name="Name">
+      </div>
+      <div class="form-group">
+        <label for="MongoDB URL">MongoDB URL</label>
+        <input type="text" name="MongoDB URL">
+      </div>
+      <div id="add-btn" class="button">Add</div>
+      <div class="response"></div>
+    </form>
+  </div>
+</div>

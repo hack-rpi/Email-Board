@@ -5,13 +5,18 @@
   },
   "globalDependencies": {
     "chokidar": "registry:dt/chokidar#1.4.3+20160316155526",
+    "electron-json-storage": "registry:dt/electron-json-storage#0.0.0+20160324000215",
     "github-electron": "registry:dt/github-electron#1.2.5+20160624085047",
     "github-electron/electron-prebuilt": "registry:dt/github-electron/electron-prebuilt#0.30.1+20160316155526",
     "glob": "registry:dt/glob#5.0.10+20160317120654",
     "glob-stream": "registry:dt/glob-stream#3.1.12+20160316155526",
     "gulp-less": "registry:dt/gulp-less#0.0.0+20160316155526",
+    "jquery": "registry:dt/jquery#1.10.0+20160701124751",
     "minimatch": "registry:dt/minimatch#2.0.8+20160317120654",
+    "mongodb": "registry:dt/mongodb#2.1.0+20160602142941",
+    "mustache": "registry:dt/mustache#0.8.2+20160316155526",
     "node": "registry:dt/node#6.0.0+20160621231320",
+    "underscore": "registry:dt/underscore#1.7.0+20160622050840",
     "undertaker": "registry:dt/undertaker#0.12.0+20160316155526",
     "vinyl": "registry:dt/vinyl#1.1.0+20160316155526",
     "vinyl-fs": "registry:dt/vinyl-fs#0.0.0+20160317120654"

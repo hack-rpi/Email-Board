@@ -1,3 +1,4 @@
 /// <reference path="../../typings/index.d.ts" />
 
-require('./script/menu.js');
+require('./script/db-dialog');
+require('./script/menu');

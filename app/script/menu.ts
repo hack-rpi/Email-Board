@@ -1,6 +1,8 @@
 /// <reference path="../../typings/index.d.ts" />
 
 import * as electron from 'electron';
+import * as storage from 'electron-json-storage';
+import * as popup from './popup';
 const remote = electron.remote;
 const {Menu, MenuItem} = remote;
 
@@ -9,9 +11,16 @@ menu.append(new MenuItem({
   label: 'File', 
   submenu: [
       {
-        label: 'New',
-        submenu: [
-        ]
+        label: 'Connect...',
+        click: function() {
+          storage.get('dbs', function(error, data) {
+            if (error) {
+              console.error(error);
+            } else {
+              popup.open('databases.mst', 'db-dialog', data);
+            }
+          });
+        }
       },
       {
         type: 'separator'
@@ -93,6 +102,19 @@ menu.append(new MenuItem({
       click: function(item, focusedWindow) {
         if (focusedWindow)
           focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+      }
+    },
+    {
+      label: 'Toggle Developer Tools',
+      accelerator: (function() {
+        if (process.platform == 'darwin')
+          return 'Alt+Command+I';
+        else
+          return 'Ctrl+Shift+I';
+      })(),
+      click: function(item, focusedWindow) {
+        if (focusedWindow)
+          focusedWindow.webContents.toggleDevTools();
       }
     }
   ]

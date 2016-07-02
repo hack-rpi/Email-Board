@@ -21,7 +21,13 @@
   },
   "homepage": "https://github.com/hack-rpi/Email-Board#readme",
   "dependencies": {
-    "electron-prebuilt": "^1.2.5"
+    "electron-json-storage": "^2.0.0",
+    "electron-prebuilt": "^1.2.5",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.0.0",
+    "mongodb": "^2.1.18",
+    "mustache": "^2.2.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
