@@ -1,0 +1,19 @@
+{
+  "name": "email-board",
+  "dependencies": {
+    "gulp": "registry:npm/gulp#4.0.0-alpha.2+20160618213436"
+  },
+  "globalDependencies": {
+    "chokidar": "registry:dt/chokidar#1.4.3+20160316155526",
+    "github-electron": "registry:dt/github-electron#1.2.5+20160624085047",
+    "github-electron/electron-prebuilt": "registry:dt/github-electron/electron-prebuilt#0.30.1+20160316155526",
+    "glob": "registry:dt/glob#5.0.10+20160317120654",
+    "glob-stream": "registry:dt/glob-stream#3.1.12+20160316155526",
+    "gulp-less": "registry:dt/gulp-less#0.0.0+20160316155526",
+    "minimatch": "registry:dt/minimatch#2.0.8+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "undertaker": "registry:dt/undertaker#0.12.0+20160316155526",
+    "vinyl": "registry:dt/vinyl#1.1.0+20160316155526",
+    "vinyl-fs": "registry:dt/vinyl-fs#0.0.0+20160317120654"
+  }
+}

@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/hack-rpi/Email-Board/issues"
   },
-  "homepage": "https://github.com/hack-rpi/Email-Board#readme"
+  "homepage": "https://github.com/hack-rpi/Email-Board#readme",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0"
+  }
 }
