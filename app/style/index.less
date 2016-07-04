@@ -1,3 +1,27 @@
 @import "./db-dialog";
-@import "./popup";
 @import "./form";
+@import "./popup";
+@import "./query-dialog";
+
+html, body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.content {
+  padding: 5px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  background-color: #ae4747;
+}
+
+footer.connected {
+  background-color: #47ae47;
+}

@@ -4,6 +4,7 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import * as storage from 'electron-json-storage';
+import * as mongo from './mongo';
 
 let index = 0;
 
@@ -20,6 +21,19 @@ $('body').on('click', '#db-dialog .db-btn', function(event) {
   switch (action) {
     case 'connect':
       pushResponse($resp, 'Attempting to connect to \'' + target + '\'');
+      mongo.connect(target, function(success) {
+        if (success) {
+          pushResponse($resp, 'Connection established.');
+          $('footer')
+            .text('Connected to \'' + target + '\'')
+            .addClass('connected');
+        } else {
+          pushResponse($resp, 'Connection failed.');
+          $('footer')
+            .text('Not connected')
+            .removeClass('connected');
+        }
+      });
       break;
     case 'view':
       pushResponse($resp, target);
@@ -37,9 +51,9 @@ $('body').on('click', '#db-dialog .db-btn', function(event) {
               $('#db-dialog .db-list li[name="' + target + '"]').remove();
               pushResponse($resp, 'Removed \'' + target + '\' successfully.');
             }
-          })
+          });
         }
-      })
+      });
       break;
     default:
       break;

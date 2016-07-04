@@ -1,0 +1,40 @@
+<div id="query-dialog" class="overlay">
+  <div class="popup">
+    <a class="close" href="#">&times;</a>
+    <h4>Saved Queries</h4>
+    <ul class="query-list">
+      {{#data}}
+        <li name="{{name}}">
+          <span>{{name}}</span>
+          <span>{{collection}}</span>
+          <span class="button query-btn" data-action="email" data-target="{{collection}}@{{query}}">
+            Email</span>
+          <span class="button query-btn" data-action="view" data-target="{{collection}}@{{query}}" >
+            View</span>
+          <span class="button query-btn" data-action="remove" data-target="{{name}}">Remove</span>
+        </li>
+      {{/data}}
+    </ul>
+    {{^data}}
+      <p>No saved queries.</p>
+    {{/data}}
+
+    <h4>Add a New Query</h4>
+    <form>
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" name="Name">
+      </div>
+      <div class="form-group">
+        <label for="Collection">Collection</label>
+        <input type="text" name="Collection">
+      </div>
+      <div class="form-group">
+        <label for="Query">Query</label>
+        <textarea name="Query" cols="30" rows="3"></textarea>
+      </div>
+      <div id="add-btn" class="button">Add</div>
+      <div class="response"></div>
+    </form>
+  </div>
+</div>

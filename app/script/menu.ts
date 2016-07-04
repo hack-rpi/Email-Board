@@ -12,12 +12,29 @@ menu.append(new MenuItem({
   submenu: [
       {
         label: 'Connect...',
+        accelerator: 'CmdOrCtrl+D',        
         click: function() {
           storage.get('dbs', function(error, data) {
             if (error) {
               console.error(error);
             } else {
-              popup.open('databases.mst', 'db-dialog', data);
+              popup.open('databases-modal.mst', 'db-dialog', data);
+            }
+          });
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Queries...',
+        accelerator: 'CmdOrCtrl+Q',        
+        click: function() {
+          storage.get('queries', function(error, data) {
+            if (error) {
+              console.error(error);
+            } else {
+              popup.open('queries-modal.mst', 'query-dialog', data);
             }
           });
         }

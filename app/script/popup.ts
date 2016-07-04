@@ -13,7 +13,7 @@ export function open(name: string, id: string, data: any): void {
     if (error) {
       console.error(error);
     } else {
-      let rendered = Mustache.render(template, {dbs: data});
+      let rendered = Mustache.render(template, {data: data});
       $('body').append(rendered);
       in_focus = id;
     }

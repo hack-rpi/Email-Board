@@ -3,18 +3,18 @@
     <a class="close" href="#">&times;</a>
     <h4>Connect to a saved database</h4>
     <ul class="db-list">
-      {{#dbs}}
+      {{#data}}
         <li name="{{name}}">
           <span>{{name}}</span>
           <span class="button db-btn" data-action="connect" data-target="{{url}}">Connect</span>
           <span class="button db-btn" data-action="view" data-target="{{url}}">View</span>
           <span class="button db-btn" data-action="remove" data-target="{{name}}">Remove</span>
         </li>
-      {{/dbs}}
+      {{/data}}
     </ul>
-    {{^dbs}}
+    {{^data}}
       <p>No saved databases.</p>
-    {{/dbs}}
+    {{/data}}
 
     <h4>Add a new database</h4>
     <form>
