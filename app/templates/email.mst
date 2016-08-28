@@ -1,0 +1,13 @@
+<div class="write-email">
+
+  <div class="email">
+    <iframe src="{{email}}" frameborder="0"></iframe>
+  </div>
+
+  <div class="edit">
+    Edit the email.
+
+    <div class="button" id="close-email">Close</div>
+  </div>
+
+</div>

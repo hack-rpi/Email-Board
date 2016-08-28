@@ -1,0 +1,10 @@
+<h3>Recent Templates</h3>
+<div class="templates">
+  <ul class="">
+    {{#templates}}
+      <li><div class="button" id="load-recent-template">{{.}}</div></li>
+    {{/templates}}
+  </ul>
+</div>
+
+<div class="button" id="load-template">Load New Template</div>

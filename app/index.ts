@@ -1,6 +1,7 @@
 /// <reference path="../typings/index.d.ts" />
 
 import * as electron from 'electron';
+import * as email from './script/email';
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -14,7 +15,7 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() {
   mainWindow = new BrowserWindow({ 
-    width: 690, 
+    width: 1000, 
     height: 600
   });
   mainWindow.loadURL('file://' + __dirname + '/index.html');
