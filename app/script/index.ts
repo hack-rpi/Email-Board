@@ -12,4 +12,5 @@ import * as Mustache from 'mustache';
 import * as $ from 'jquery';
 import * as storage from 'electron-json-storage';
 
+
 $(document).ready(main.load);

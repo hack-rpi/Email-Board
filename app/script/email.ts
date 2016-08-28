@@ -2,17 +2,21 @@
 /// <reference path="../../definitions/index.d.ts" />
 
 import * as fs from 'fs';
+import * as marked from 'marked';
 import * as Mustache from 'mustache';
 import * as $ from 'jquery';
 import * as tmp from 'tmp';
 import * as _ from 'underscore';
 import * as storage from 'electron-json-storage';
 import * as main from './main';
+const typeahead = require('typeahead.js-browserify');
 const {dialog} = require('electron').remote;
+const Bloodhound = typeahead.Bloodhound;
 
 let tmp_files = [];
 
 tmp.setGracefulCleanup();
+typeahead.loadjQueryPlugin();
 
 
 $('body').on('click', '.button#load-template', function(event) {
@@ -48,6 +52,16 @@ $('body').on('click', '.button#load-recent-template', function(event) {
   openTemplate(filename);
 });
 
+$('body').on('input propertychange paste', 'textarea[name="content"]', function(event) {
+  let text = $(event.target).val();
+  let markdown = marked(text);
+  $('.email iframe').contents().find('#CONTENT').html(markdown);
+});
+
+$('body').on('typeahead:selected', 'input[name="query"]', function(event, query) {
+  console.log(query);
+});
+
 $('body').on('click', '.button#close-email', function(event) {
   cleanup();
   main.load();
@@ -59,9 +73,9 @@ function openTemplate(filename: string): void {
     if (error) {
       console.error(error);
     } else {
-      let renderedEmail = Mustache.render(template, {}),
-          tmpobj = tmp.fileSync();
-      fs.writeFileSync(tmpobj.name, renderedEmail);
+      template = template.replace(/{{\s*CONTENT\s*}}/g, '<div id="CONTENT"></div>');
+      let tmpobj = tmp.fileSync();
+      fs.writeFileSync(tmpobj.name, template);
       fs.readFile(__dirname + '/../templates/email.mst', 'utf-8', (error, template) => {
         if (error) {
           console.error(error);
@@ -69,6 +83,27 @@ function openTemplate(filename: string): void {
           tmp_files.push(tmpobj);
           let rendered = Mustache.render(template, {email: tmpobj.name});
           $('.content').html(rendered);
+          storage.get('queries', function(error, queries) {
+            if (error) {
+              console.error(error);
+            } else {
+              let hound = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                identify: (q) => { return q.name; },
+                local: queries
+              });
+              $('input[name="query"]').typeahead({
+                hint: true,
+                minLength: 0,
+                highlight: true
+              }, {
+                name: 'queries',
+                display: 'name',
+                source: hound
+              });
+            }
+          });
         }
       });
     }

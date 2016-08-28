@@ -25,9 +25,11 @@
     "electron-prebuilt": "^1.2.5",
     "font-awesome": "^4.6.3",
     "jquery": "^3.0.0",
+    "marked": "^0.3.6",
     "mongodb": "^2.1.18",
     "mustache": "^2.2.1",
     "tmp": "0.0.28",
+    "typeahead.js-browserify": "^1.0.7",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

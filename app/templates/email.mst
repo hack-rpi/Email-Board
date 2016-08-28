@@ -5,8 +5,11 @@
   </div>
 
   <div class="edit">
-    Edit the email.
+    <textarea name="content" cols="30" rows="10"></textarea>
 
+    <input name="query" type="text">
+
+    <br><br><br>
     <div class="button" id="close-email">Close</div>
   </div>
 
