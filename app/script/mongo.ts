@@ -7,6 +7,7 @@ const MongoClient = mongodb.MongoClient;
 let curr_uri = undefined;
 const mongo_uri_re = new RegExp('mongodb://.+');
 
+
 /**
  * 
  */
@@ -31,7 +32,8 @@ export function connect(uri: string, cb: (success: boolean) => any): void
 /**
  * 
  */
-export function count(collection: string, query: Object, cb: (error: boolean, count: number) => any)
+export function count(collection: string, query: Object, 
+                      cb: (error: boolean, count: number) => any)
   : void
 {
   if (! curr_uri) {
@@ -47,6 +49,35 @@ export function count(collection: string, query: Object, cb: (error: boolean, co
       db.collection(collection).count(query).then((count) => {
         db.close();
         return cb(false, count);
+      }).catch((reason) => {
+        console.error(reason);
+        db.close();
+        return cb(true, null);
+      });
+    }
+  });
+}
+
+
+/**
+ * 
+ */
+export function find(collection: string, query: Object, 
+                        cb: (error: boolean, data: Object[]) => any): void
+{
+  if (! curr_uri) {
+    console.error('Not connected to database.');
+    return cb(true, null);
+  }
+  MongoClient.connect(curr_uri, function(error, db) {
+    if (error) {
+      console.error(error);
+      db.close();
+      return cb(true, null);
+    } else {
+      db.collection(collection).find(query).toArray().then((data) => {
+        db.close();
+        return cb(false, data);
       }).catch((reason) => {
         console.error(reason);
         db.close();

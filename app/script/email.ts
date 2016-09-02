@@ -2,13 +2,16 @@
 /// <reference path="../../definitions/index.d.ts" />
 
 import * as fs from 'fs';
+import {api_key, domain} from './mailgun-dialog';
 import * as marked from 'marked';
 import * as Mustache from 'mustache';
+import * as mongo from './mongo';
 import * as $ from 'jquery';
 import * as tmp from 'tmp';
 import * as _ from 'underscore';
 import * as storage from 'electron-json-storage';
 import * as main from './main';
+const mailgun = require('mailgun-js');
 const typeahead = require('typeahead.js-browserify');
 const {dialog} = require('electron').remote;
 const Bloodhound = typeahead.Bloodhound;
@@ -59,7 +62,21 @@ $('body').on('input propertychange paste', 'textarea[name="content"]', function(
 });
 
 $('body').on('typeahead:selected', 'input[name="query"]', function(event, query) {
-  console.log(query);
+  $('dd#query-name').text(query.name);
+  $('dd#query-query').text(query.collection + '@' + query.query);
+  $('dd#query-count').text('...');  
+  mongo.count(query.collection, query.query, function(error, count) {
+    if (error) {
+      console.error(error);
+      $('dd#query-count').text('error');
+    } else {
+      $('dd#query-count').text(count);
+    }
+  });
+});
+
+$('body').on('click', '.button#send-email', function(event) {
+  sendEmail();
 });
 
 $('body').on('click', '.button#close-email', function(event) {
@@ -111,8 +128,82 @@ function openTemplate(filename: string): void {
 }
 
 
-export function cleanup(): void {
+function sendEmail() {
+  const mailer = mailgun({ apiKey: api_key, domain: domain });
+  let from_email = $('input[name="from"]').val(),
+      subject = $('input[name="subject"]').val(),
+      content = $('textarea[name="content"]').val(),
+      html = $('.email iframe').contents().find('html').html();
+  let email_fields = $('input[name="email"]').val(),
+      name_fields = $('input[name="name"]').val();
+  let query = $('dd#query-query').text(),
+      collection = '',
+      bits = query.split('@');
+  if (query === '') {
+    console.error('must select query');
+    return;
+  }
+  collection = bits[0];
+  query = bits[1];
+  if (from_email === '') {
+    console.error('from field cannot be empty');
+    return;
+  }
+  if (subject === '') {
+    console.error('subject field cannot be empty');
+    return;
+  }
+  if (content === '') {
+    console.error('content cannot be empty');
+    return;
+  }
+  if (email_fields === '') {
+    console.error('email cannot be empty');
+    return;
+  }
+  if (name_fields === '') {
+    console.error('name cannot be empty');
+    return;
+  }
+  mongo.find(collection, JSON.parse(query), (error, data) => {
+    if (error) {
+      console.error('query failed');
+      return;
+    } else {
+      for (let i=0; i<data.length; i++) {
+        let email = getNestedProperty(data[i], email_fields),
+            name = getNestedProperty(data[i], name_fields);
+        let request = {
+          from: from_email,
+          to: email,
+          subject: subject,
+          text: content,
+          html: Mustache.render(html, {name: name})
+        };
+        mailer.messages().send(request, function(error, body) {
+          if (error) {
+            console.error(error);
+          } else {
+            console.log(body);
+          }
+        });
+      } /* END FOR */
+    }
+  }); /* END MONGO FIND */  
+}
+
+
+function cleanup(): void {
   for (var i=0; i<tmp_files.length; i++) {
     tmp_files[i].removeCallback();
   }
+}
+
+
+function getNestedProperty(object: Object, fields: string): any {
+  let bits = fields.split('.');
+  for (let i=0; i<bits.length; i++) {
+    object = object[bits[i]];
+  }
+  return object;
 }

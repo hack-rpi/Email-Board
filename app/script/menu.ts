@@ -43,6 +43,22 @@ menu.append(new MenuItem({
         type: 'separator'
       },
       {
+        label: 'Mailgun...',
+        accelerator: 'CmdOrCtrl+G',        
+        click: function() {
+          storage.get('mailgun', function(error, data) {
+            if (error) {
+              console.error(error);
+            } else {
+              popup.open('mailgun-modal.mst', 'mailgun-dialog', data);
+            }
+          });
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
         label: 'Open File...'
       },
       {

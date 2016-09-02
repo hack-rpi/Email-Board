@@ -1,0 +1,17 @@
+<div id="mailgun-dialog" class="overlay">
+  <div class="popup">
+    <a class="close" href="#">&times;</a>
+    <h4>Mailgun Credentials</h4>
+    <form>
+      <div class="form-group">
+        <label for="API Key">API Key</label>
+        <input type="text" name="API Key" value="{{ data.api_key }}">
+      </div>
+      <div class="form-group">
+        <label for="Domain">Domain</label>
+        <input type="text" name="Domain" value="{{ data.domain }}">
+      </div>
+      <div id="save" class="button">Save</div>
+    </form>
+  </div>
+</div>

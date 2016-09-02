@@ -5,9 +5,40 @@
   </div>
 
   <div class="edit">
+
+    <div class="form-group">
+      <label for="from">From</label>
+      <input name="from" type="text">
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input name="subject" type="text">
+    </div>
+
     <textarea name="content" cols="30" rows="10"></textarea>
 
     <input name="query" type="text">
+    <dl>
+      <dt>Name</dt>
+      <dd id="query-name"></dd>
+      <dt>Query</dt>
+      <dd id="query-query"></dd>
+      <dt>Count</dt>
+      <dd id="query-count"></dd>
+    </dl>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input name="email" type="text">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input name="name" type="text">
+    </div>
+
+    <br><br>
+    <div class="button" id="send-email">Send</div>
 
     <br><br><br>
     <div class="button" id="close-email">Close</div>

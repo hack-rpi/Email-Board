@@ -2,10 +2,11 @@
 
 require('./script/db-dialog');
 require('./script/email');
+require('./script/mailgun-dialog');
 require('./script/menu');
-const main = require('./script/main');
 require('./script/mongo');
 require('./script/query-dialog');
+const main = require('./script/main');
 
 import * as fs from 'fs';
 import * as Mustache from 'mustache';
