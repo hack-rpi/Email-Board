@@ -2,7 +2,7 @@
   "name": "email-board",
   "version": "0.1.0",
   "description": "seamlessly integregate MongoDB and Mailgun",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,20 +20,8 @@
     "url": "https://github.com/hack-rpi/Email-Board/issues"
   },
   "homepage": "https://github.com/hack-rpi/Email-Board#readme",
-  "dependencies": {
-    "electron-json-storage": "^2.0.0",
-    "electron-prebuilt": "^1.2.5",
-    "font-awesome": "^4.6.3",
-    "jquery": "^3.0.0",
-    "mailgun-js": "^0.7.12",
-    "marked": "^0.3.6",
-    "mongodb": "^2.1.18",
-    "mustache": "^2.2.1",
-    "tmp": "0.0.28",
-    "typeahead.js-browserify": "^1.0.7",
-    "underscore": "^1.8.3"
-  },
   "devDependencies": {
+    "electron-prebuilt": "^1.2.5",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0"
   }

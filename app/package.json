@@ -1,0 +1,28 @@
+{
+  "name": "email-board",
+  "version": "0.1.0",
+  "description": "seamlessly integregate MongoDB and Mailgun",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hack-rpi/Email-Board.git"
+  },
+  "author": "Matt Poegel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hack-rpi/Email-Board/issues"
+  },
+  "homepage": "https://github.com/hack-rpi/Email-Board#readme",
+  "dependencies": {
+    "electron-json-storage": "^2.0.0",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.0.0",
+    "mailgun-js": "^0.7.12",
+    "marked": "^0.3.6",
+    "mongodb": "^2.1.18",
+    "mustache": "^2.2.1",
+    "tmp": "0.0.28",
+    "typeahead.js-browserify": "^1.0.7",
+    "underscore": "^1.8.3"
+  }
+}
