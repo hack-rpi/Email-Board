@@ -1,7 +1,7 @@
 <div id="db-dialog" class="overlay">
   <div class="popup">
     <a class="close" href="#">&times;</a>
-    <h4>Connect to a saved database</h4>
+    <h1>Connect to a saved database</h1>
     <ul class="db-list">
       {{#data}}
         <li name="{{name}}">
@@ -16,7 +16,7 @@
       <p>No saved databases.</p>
     {{/data}}
 
-    <h4>Add a new database</h4>
+    <h1>Add a new database</h1>
     <form>
       <div class="form-group">
         <label for="Name">Name</label>

@@ -1,4 +1,4 @@
-<h3>Recent Templates</h3>
+<h1>Recent Templates</h1>
 <div class="templates">
   <ul class="">
     {{#templates}}

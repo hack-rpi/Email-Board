@@ -1,9 +1,0 @@
-#db-dialog .db-list li {
-  display: flex;
-}
-#db-dialog .db-list li span:first-child {
-  flex-basis: 70%;
-}
-#db-dialog .db-list li span {
-  flex-basis: 10%;
-}

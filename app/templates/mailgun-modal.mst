@@ -1,7 +1,7 @@
 <div id="mailgun-dialog" class="overlay">
   <div class="popup">
     <a class="close" href="#">&times;</a>
-    <h4>Mailgun Credentials</h4>
+    <h1>Mailgun Credentials</h1>
     <form>
       <div class="form-group">
         <label for="API Key">API Key</label>

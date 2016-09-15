@@ -1,7 +1,7 @@
 <div id="query-dialog" class="overlay">
   <div class="popup">
     <a class="close" href="#">&times;</a>
-    <h4>Saved Queries</h4>
+    <h1>Saved Queries</h1>
     <ul class="query-list">
       {{#data}}
         <li name="{{name}}">
@@ -19,7 +19,7 @@
       <p>No saved queries.</p>
     {{/data}}
 
-    <h4>Add a New Query</h4>
+    <h1>Add a New Query</h1>
     <form>
       <div class="form-group">
         <label for="Name">Name</label>

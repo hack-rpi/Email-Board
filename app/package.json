@@ -1,6 +1,6 @@
 {
   "name": "email-board",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "seamlessly integregate MongoDB and Mailgun",
   "main": "index.js",
   "repository": {
